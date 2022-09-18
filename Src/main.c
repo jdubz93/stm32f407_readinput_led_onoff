@@ -42,20 +42,34 @@ int main(void)
 	// enable the clock for GPIOA peripheral (port 0) in the AHB1ENR
 	*pClockCtrlReg |= (1 << 0);
 
-	// clear 0 and 1st bit positions on GPIO Moder A. 01: General purpose output mode
-	*pGPIO_A_ModeReg &= ~(1 << 0);
-	*pGPIO_A_ModeReg &= ~(1 << 1);
-	*pGPIO_A_ModeReg |= (1 << 0);
+	/** clear 0 and 1st bit positions on GPIO Moder A. 01: General purpose output mode
+	 ** 3 = 0011, 0 = port 0, this clears the first two bit positions of port 0 */
+	*pGPIO_A_ModeReg &= ~(3 << 0); // For example take 0011 and shift it 0 spaces: 0011 ->0011
+
+	/** ugly version */
+	// *pGPIO_A_ModeReg &= ~(1 << 0);
+	// *pGPIO_A_ModeReg &= ~(1 << 1);
+	// *pGPIO_A_ModeReg |= (1 << 0);
 
 	while(1) {
 		// read GPIO A input data
-		if (*pGPIO_A_InputDataReg &(1 << 0)) {
+		uint8_t pin_PA0_status = (uint8_t)(*pGPIO_A_InputDataReg & 0x01); // or 0x1 would work too.
+		if (pin_PA0_status) {
 			ledOn(pGpiodModeReg, pGpiodOutputDataReg);
 			delayFunc();
 		} else {
 			ledOff(pGpiodModeReg, pGpiodOutputDataReg);
 			delayFunc();
 		}
+
+		/** ugly version */
+		// if (*pGPIO_A_InputDataReg &(1 << 0)) {
+		// 	ledOn(pGpiodModeReg, pGpiodOutputDataReg);
+		// 	delayFunc();
+		// } else {
+		// 	ledOff(pGpiodModeReg, pGpiodOutputDataReg);
+		// 	delayFunc();
+		// }
 	}
 }
 
