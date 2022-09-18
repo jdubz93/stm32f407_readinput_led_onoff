@@ -30,7 +30,6 @@ void ledOn(uint32_t* pGPIO_D_ModeReg, uint32_t* pGPIO_D_OutData);
 
 int main(void)
 {
-	printf("Enable led on PD12");
 	uint32_t *pClockCtrlReg			= (uint32_t*)0x40023830;
 	uint32_t *pGpiodModeReg			= (uint32_t*)0x40020C00;
 	uint32_t *pGpiodOutputDataReg	= (uint32_t*)0x40020C14;
