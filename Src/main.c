@@ -58,21 +58,6 @@ int main(void)
 			delayFunc();
 		}
 	}
-
-	/** Code from blinky project */
-	// ledOn(pGpiodModeReg, pGpiodOutputDataReg);
-	// for(int i = 0; i < 10; i++) {
-	// 	if (i % 2) {
-	// 		ledOn(pGpiodModeReg, pGpiodOutputDataReg);
-	// 		delayFunc();
-	// 	} else {
-	// 		ledOff(pGpiodModeReg, pGpiodOutputDataReg);
-	// 		delayFunc();
-	// 	}
-	// }
-	// ledOff(pGpiodModeReg, pGpiodOutputDataReg);
-    // /* Loop forever */
-	// for(;;);
 }
 
 void delayFunc(void) {
