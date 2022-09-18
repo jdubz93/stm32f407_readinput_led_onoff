@@ -32,11 +32,11 @@ int main(void)
 {
 	printf("Enable led on PD12");
 	uint32_t *pClockCtrlReg			= (uint32_t*)0x40023830;
-	uint32_t *pGpiodModeReg 		= (uint32_t*)0x40020C00;
+	uint32_t *pGpiodModeReg			= (uint32_t*)0x40020C00;
 	uint32_t *pGpiodOutputDataReg	= (uint32_t*)0x40020C14;
 
-	uint32_t* pGPIO_A_ModeReg		= (uint32_t*)0x40020000;
-	uint32_t* pGPIO_A_InputDataReg  = (uint32_t*)0x40020010;
+	uint32_t* pGPIO_A_ModeReg 		= (uint32_t*)0x40020000;
+	uint32_t* pGPIO_A_InputDataReg	= (uint32_t*)0x40020010;
 
 	// enable the clock for GPIOD peripheral (port 3) in the AHB1ENR
 	*pClockCtrlReg |= (1 << 3);
